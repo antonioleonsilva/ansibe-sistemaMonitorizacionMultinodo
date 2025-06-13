@@ -10,7 +10,7 @@ Despliegue automatizado con Ansible de un sistema de monitorización de nodos fi
 - [Instalación](#instalación)
 
 ## Descripción
-Este proyecto automatiza el despliegue de un sistema de monitorización de nodos físicos utilizando el recolector de métricas Prometheus y la plataforma de visualización de datos Grafana (ambos alojados en Docker). Tanto la fuente de datos de Grafana como el dashboard con los datos 
+Este proyecto automatiza el despliegue de un sistema de monitorización de nodos físicos utilizando el recolector de métricas Prometheus y la plataforma de visualización de datos Grafana (ambos alojados en Docker). Tanto la fuente de datos de Grafana como el dashboard con los datos que se monitorizarán se crearán automáticamente en la ejeucción del Playbook.
 
 ## Características
 
@@ -50,7 +50,7 @@ http://IP_DEL_SERVIDOR:9090
 De la misma manera, para acceder a la interfaz Grafana utiliza la dirección IP del servidor Docker. Accede a través del puerto 3000. El usuario y contraseña por defecto es **admin**
 ```bash
 http://IP_DEL_SERVIDOR:3000
-
+```
 
 
 
