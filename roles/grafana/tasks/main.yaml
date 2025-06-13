@@ -1,0 +1,40 @@
+---
+- name: Crear directorio de dashboards si no existe
+  file:
+    path: /etc/grafana/provisioning/dashboards/jsons
+    state: directory
+
+- name: Crear directorio de datasources si no existe
+  file:
+    path: /etc/grafana/provisioning/datasources
+    state: directory
+
+- name: Copiar dashboards.yaml
+  copy:
+    src: dashboards.yaml
+    dest: /etc/grafana/provisioning/dashboards/dashboards.yaml
+
+- name: Copiar grafana_dashboard.json
+  copy:
+    src: grafana_dashboard.json
+    dest: /etc/grafana/provisioning/dashboards/jsons/grafana_dashboard.json
+
+- name: Procesar y copiar datasources.yaml
+  template:
+    src: datasources.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/datasources.yaml
+
+- name: Crear contenedor de Grafana
+  docker_container:
+    name: grafana
+    image: grafana/grafana:latest
+    state: started
+    restart_policy: always
+    published_ports:
+      - "3000:3000"
+    env:
+      GF_SECURITY_ADMIN_PASSWORD: "admin"
+    volumes:
+      - /etc/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - /etc/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+

@@ -1,0 +1,84 @@
+{
+  "uid": "prometheus-dashboard",
+  "title": "Prometheus Monitoring",
+  "tags": ["prometheus", "monitoring"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "CPU Usage",
+      "targets": [
+        {
+          "expr": "avg(rate(node_cpu_seconds_total{mode='idle'}[5m])) by (instance)",
+          "legendFormat": "{{instance}}",
+          "interval": "",
+          "datasource": "Prometheus"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Memory Usage",
+      "targets": [
+        {
+          "expr": "avg(node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) by (instance)",
+          "legendFormat": "{{instance}}",
+          "interval": "",
+          "datasource": "Prometheus"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Disk Usage",
+      "targets": [
+        {
+          "expr": "avg(rate(node_disk_written_bytes_total[5m])) by (instance)",
+          "legendFormat": "{{instance}}",
+          "interval": "",
+          "datasource": "Prometheus"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Network Traffic",
+      "targets": [
+        {
+          "expr": "avg(rate(node_network_receive_bytes_total[5m])) by (instance)",
+          "legendFormat": "{{instance}}",
+          "interval": "",
+          "datasource": "Prometheus"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 24,
+        "w": 12,
+        "h": 8
+      }
+    }
+  ],
+  "schemaVersion": 16,
+  "version": 1,
+  "links": []
+}
+

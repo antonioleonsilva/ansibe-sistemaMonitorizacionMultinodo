@@ -1,0 +1,16 @@
+--- 
+- name: Desplegar Prometheus y Grafana en Docker
+  hosts: servidores
+  roles:
+    - prometheus
+    - grafana
+
+- name: Configurar nodos clientes para Prometheus
+  hosts: nodos_clientes
+  roles:
+    - nodos_clientes
+
+- name: Reenvío de puertos
+  hosts: routers
+  roles:
+    - routers

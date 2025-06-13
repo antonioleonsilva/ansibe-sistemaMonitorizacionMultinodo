@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'nodos_clientes'
+    static_configs:
+      - targets:
+          {% for host in groups['nodos_clientes'] %}
+          - "{{ hostvars[host].ansible_host }}:9100"
+          {% endfor %}
+

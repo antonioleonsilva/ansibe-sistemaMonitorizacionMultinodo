@@ -1,0 +1,18 @@
+---
+- name: Redirigir tráfico HTTP entrante por el puerto 3000 al contenedor Grafana del servidor Docker
+  iptables:
+    table: nat
+    chain: PREROUTING
+    protocol: tcp
+    destination_port: 3000
+    jump: DNAT
+    to_destination: "{{ hostvars['servidorDocker'].ansible_host }}:3000"
+
+- name: Redirigir tráfico HTTP entrante por el puerto 9090 al contenedor de Prometheus del servidor Docker
+  iptables:
+    table: nat
+    chain: PREROUTING
+    protocol: tcp
+    destination_port: 9090
+    jump: DNAT
+    to_destination: "{{ hostvars['servidorDocker'].ansible_host }}:9090"

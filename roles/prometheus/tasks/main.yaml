@@ -1,0 +1,22 @@
+---
+- name: Crear directorio /etc/prometheus si no existe
+  file:
+    path: /etc/prometheus
+    state: directory
+
+- name: Copiar archivo de configuración de Prometheus
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+
+- name: Crear contenedor de Prometheus
+  docker_container:
+    name: prometheus
+    image: prom/prometheus:latest
+    state: started
+    restart_policy: always
+    published_ports:
+      - "9090:9090"
+    volumes:
+      - /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
