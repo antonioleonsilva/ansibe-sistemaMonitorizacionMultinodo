@@ -37,7 +37,7 @@ Este proyecto automatiza el despliegue de un sistema de monitorización de nodos
 Clona este repositorio y ejecuta el playbook con el fichero de inventario personalizado según tu topología:
 
 ```bash
-git clone https://github.com/antonioleonsilva/ansible-sistemaMonitorizacionMultinodo.git
+git clone https://github.com/antonioleonsilva/ansibe-sistemaMonitorizacionMultinodo.git
 cd ansible-sistemaMonitorizacionMultinodo
 ansible-playbook -i inventory/hosts.ini main.yaml
 ```
