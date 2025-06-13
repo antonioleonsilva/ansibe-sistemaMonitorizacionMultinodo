@@ -14,11 +14,11 @@ Este proyecto automatiza el despliegue de un sistema de monitorización de nodos
 
 ## Características
 
-- Instalación y configuración automatizada con Ansible
-- Sistema de monitorización
+- Instalación y configuración automatizada con Ansible.
+- Sistema de monitorización.
 - Compatible con nodos que no se encuentran en la misma red física que Prometheus y Grafana. 
-- Fácil adaptación a distintos entornos y nodos
-- Servicio altamente escalable
+- Fácil adaptación a distintos entornos y nodos.
+- Servicio altamente escalable.
 
 ## Requisitos
 
@@ -37,8 +37,8 @@ Este proyecto automatiza el despliegue de un sistema de monitorización de nodos
 Clona este repositorio y ejecuta el playbook con el fichero de inventario personalizado según tu topología:
 
 ```bash
-git clone https://github.com/antonioleonsilva/ansible-servicioWebBalanceado.git
-cd ansible-servicioWebBalanceado
+git clone https://github.com/antonioleonsilva/ansible-sistemaMonitorizacionMultinodo.git
+cd ansible-sistemaMonitorizacionMultinodo
 ansible-playbook -i inventory/hosts.ini main.yaml
 ```
 
